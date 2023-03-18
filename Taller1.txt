@@ -1,0 +1,99 @@
+-----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+/*
+3. Escribir un seudocódigo que calcule la edad de una persona con su año de nacimiento
+*/
+-----------------------------------------------------------------------------------------------------
+Inicio
+
+Variables edad, fechaNacimiento, anioNacimiento, mesNacimiento, diaNacimiento, anioActual, mesActual, diaActual, fechaActual
+
+Escribir('Ingrese la fecha de nacimiento')
+
+Leer fechaNacimiento
+
+si fechaNacimiento no es valida entonces
+	Escribir('Ingrese una fecha de nacimiento correcta')
+	retornar
+fin si
+
+diaActual = obtener dia de la fecha actual
+mesActual = obtener el mes de fecha actual
+anioActual = obtener el año de fecha actual
+
+diaNacimiento = obtener el dia de nacimiento
+mesNacimiento = obtener el mes de nacimiento
+anioNacimiento = obtener el año de nacimiento
+
+
+si 
+   (mesActual < mesNacimiento) o 
+   (mesActual = mesNacimiento y diaActual < diaNacimiento) entonces
+   
+   edad = anioActual - anioNacimiento - 1
+sino
+	edad = anioActual - anioNacimiento
+fin si
+   
+Escribir('La edad en años es: ' + edad)
+
+Fin
+-----------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+/*
+4. Escribir un seudocódigo que permita calcular el promedio de 5 notas de un estudiante de ingeniería
+*/
+-----------------------------------------------------------------------------------------------------
+Inicio
+
+Variables nota1, nota2, nota3, nota4, nota5, promedio
+
+Escribir('Ingresa las 5 notas')
+
+Leer nota1
+Leer nota2
+Leer nota3
+Leer nota4
+Leer nota5
+
+si (nota1 < 0) o (nota2 < 0) o (nota3 < 0) o (nota4 < 0) o (nota5 < 0) o
+    (nota1 > 5) o (nota2 > 5) o (nota3 > 5) o (nota4 > 5) o (nota5 > 5) entones
+	Escribir('Ingrese unicamente notas entre 0 y 5')
+	retornar
+sino
+	promedio = (nota1 + nota2 + nota3 + nota4 + nota5) / 5
+fin si
+
+Escribir('El promedio de las 5 notas es: ' + promedio )
+
+
+Fin
+-----------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+/*
+5. Escribir un seudocódigo que muestre la suma de los primeros 10 números impares 
+*/
+-----------------------------------------------------------------------------------------------------
+Inicio
+
+Variables suma, contador = 0, numero = 1
+
+Mientras que contador <= 10
+	
+	si numero % 2 <> 0 entonces
+		suma = suma + numero
+		contador = contador + 1
+	fin si
+
+numero = numero + 1
+
+fin Mientras
+
+Escribir('La suma de los 10 primeros numeros impares es: ' + suma)
+
+Fin
+-----------------------------------------------------------------------------------------------------
