@@ -2,7 +2,8 @@ import { Button } from "../../Components/Button";
 import { Page } from "../../Components/Page"
 import { FormContainer, FormControl } from "../../globalStyles";
 import { useForm } from 'react-hook-form';
-
+import { emailExpRegular } from '../../Constants';
+import { phoneNumberExpRegular } from "../../Constants";
 
 const Signup = () => {
 
@@ -36,16 +37,17 @@ const onSubmitLogin = (data) => {
           <FormControl>
             <label>Teléfono</label>
             <input type='text' {...register("phoneNumber",
-                { required: true, minLength: 10, maxLength: 10, pattern: /"^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"/gmi}
+                { required: true, minLength: 10, maxLength: 10, pattern: phoneNumberExpRegular}
             )} />
             {errors.phoneNumber?.type === 'required' && <span>Campo requerido</span>}
             {errors.phoneNumber?.type === 'minLength' && <span>Teléfono 10 caracteres</span>}
             {errors.phoneNumber?.type === 'maxLength' && <span>Teléfono 10 caracteres</span>}
+            {errors.phoneNumber?.type === 'pattern' && <span>Debes ingresar un teléfono válido</span>}
           </FormControl>
           <FormControl>
             <label>Correo electrónico</label>
             <input type='text' {...register("emailAddress",
-                { required: true, pattern: /^[A-Za-z]+[A-Za-z0-9_\.]*@[A-Za-z0-9]+\.[A-Za-z0-9]+/i}
+                { required: true, pattern: emailExpRegular }
             )} />
             {errors.emailAddress?.type === 'required' && <span>Campo requerido</span>}
             {errors.emailAddress?.type === 'pattern' && <span>Debes ingresar un correo válido</span>}
