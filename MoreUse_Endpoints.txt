@@ -1,0 +1,38 @@
+# MoreUse Api
+
+## Modules
+- Users (login, signup, profile)
+- Clothes (agregar prenda, eliminar prenda, actualizar prenda, consultar prenda, mis prendas)
+- Payments / Orders
+
+Usuario ingresa, se loguea, ve prendas, compra
+
+Endpoints de cada uno de los módulos
+
+GET: Para consultar y leer recursos
+POST: Para crear recursos
+PUT: Para editar recursos
+DELETE: Para eliminar recursos.
+
+### Module - users
+
+	Login
+
+		Verbo 	Endpoint 		Parametros														Auth
+
+		POST	/login			body: {email, password}											No
+		POST	/logout			body: {email}													Si
+		
+	Users
+		
+		POST	/users			body: {name, address, phone, email, password}					No
+		PUT		/users			body: {name, address, phone, email, password}					Si
+		GET		/users			params {email}													Si
+
+### Module - clothes
+
+GET		/myclothes			 	params: {email}													Si
+POST	/myclothes				body: {id, urlimage, name, target, gender, description}			Si
+PUT		/myclothes				body: {id, urlimage, name, target, gender, description}			Si
+GET		/myclothes/getall		params {""}														No
+GET		/myclothes/getbyid		params: {id}													No
