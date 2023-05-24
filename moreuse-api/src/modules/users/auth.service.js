@@ -1,5 +1,6 @@
 const { json } = require('express')
 const errorHandler = require('../../utils/errorHandler')
+const User = require('./models/user.model')
 const { USER_PASS_WORNG, SERVER_ERROR } = require('./utils/dict.errors')
 
 const login = (email, password) => {
@@ -24,6 +25,22 @@ const logout = (idUser) => {
   }
 }
 
+const signup = async (userData) => {
+  try {
+    const user = User(userData);
+    await user.save(); // -> insert_one({....}) // Lo que hace por debajo
+    return {
+      message: 'user created',
+      user
+    }
+  } catch (error) {
+    throw error.handled ? error : errorHandler(SERVER_ERROR, error);
+  }
+  return {
+    data: userData
+  }
+}
+
 const info = (idUser) => {
   return {
     name: 'Juan Perez',
@@ -36,5 +53,6 @@ const info = (idUser) => {
 module.exports = {
   login,
   logout,
+  signup,
   info
 }
