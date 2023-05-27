@@ -12,6 +12,7 @@ require('./src/connection/mongo')
 
 // modules
 app.use('/auth', require('./src/modules/users/auth.routes'));
+app.use('/clothes',require('./src/modules/clothes/clothes.routes'));
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
