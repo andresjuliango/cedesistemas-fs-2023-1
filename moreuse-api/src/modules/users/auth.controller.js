@@ -11,7 +11,7 @@ const login = async (req, res) => {
 }
 
 const logout = (req, res) => {
-  const idUser = '1234'; // TODO
+  const {idUser} = req.payload;
   const response = authService.logout(idUser)
   res.status(200).json(response);
 }
@@ -28,7 +28,7 @@ const signup = async (req, res) => {
 
 const info = async (req, res) => {
   try {
-    const idUser = '1234'; // TODO
+    const {idUser} = req.payload;
     const response = await authService.info(idUser)
     res.status(200).json(response);
   } catch (error) {

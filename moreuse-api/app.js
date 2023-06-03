@@ -1,7 +1,11 @@
 const express = require('express');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+require('dotenv').config({ path: `src/enviroment/.env.${process.env.NODE_ENV}`})
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+
+//console.log('env***',process.env.NODE_ENV);
+//console.log('jwt', process.env.JWT_SECRET);
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());

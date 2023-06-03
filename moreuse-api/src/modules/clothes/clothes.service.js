@@ -62,6 +62,24 @@ const getDetail = async (clotheId) => {
   }
 };
 
+const getMyStuff = async (idUser) => {
+  try {
+    //console.log('idUser',idUser);
+    const query = {
+      sellerId: idUser
+    };
+
+    console.log('query',query);
+
+    const clothes = await Clothe.find(query);
+    return {
+      clothes
+    }
+  } catch (error) {
+    throw error.handled ? error : errorHandler(dictErrors.SERVER_ERROR);
+  }
+};
+
 const changeStatus = async (clotheId, statusId) => {
   try {
     const query = { _id: clotheId };
@@ -81,5 +99,6 @@ const changeStatus = async (clotheId, statusId) => {
 module.exports = {
   add,
   getAll,
-  getDetail
+  getDetail,
+  getMyStuff
 }
