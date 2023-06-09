@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config({ path: `src/enviroment/.env.${process.env.NODE_ENV}`})
 const app = express();
+const cors = require('cors');
 const port = process.env.PORT || 3000;
 
 //console.log('env***',process.env.NODE_ENV);
@@ -9,6 +10,7 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+app.use(cors());
 
 // connect with database
 require('./src/connection/mongo')

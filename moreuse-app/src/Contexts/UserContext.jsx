@@ -1,7 +1,7 @@
 import  React, {createContext, useState} from 'react';
 
 const initialState = {
-  isAuth: true,
+  isAuth: false,
   name: '',
   email: '',
   phone: '',

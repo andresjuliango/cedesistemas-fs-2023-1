@@ -75,6 +75,7 @@ const getMyStuff = async (idUser) => {
     return {
       clothes
     }
+    throw errorHandler(dictErrors.CLOTHE_NOT_FOUND)
   } catch (error) {
     throw error.handled ? error : errorHandler(dictErrors.SERVER_ERROR);
   }
