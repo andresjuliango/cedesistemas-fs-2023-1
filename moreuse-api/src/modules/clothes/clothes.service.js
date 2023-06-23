@@ -29,6 +29,8 @@ const getAll = async (filter) => {
       status: CLOTHES_STATUS.FOR_SALE
     };
 
+    console.log(filter);
+
     //Si llega datos para el filtro se agregan
     if (filter.gender) query.gender = filter.gender;
     if (filter.target) query.target = filter.target;
@@ -51,7 +53,9 @@ const getAll = async (filter) => {
 
 const getDetail = async (clotheId) => {
   try {
+    console.log("getDetail",clotheId);
     if (!mongoose.Types.ObjectId.isValid(clotheId)){
+      console.log(clotheId);
       throw errorHandler(dictErrors.CLOTHE_NOT_FOUND)
     }
     const clothe = await Clothe.findById(clotheId);

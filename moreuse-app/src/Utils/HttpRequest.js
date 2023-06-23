@@ -1,13 +1,14 @@
 import axios from 'axios';
 
-const headersConfig = () => {
+const headersConfig = (token) => {
   return {
     "Content-Type": "application/json",
-    "Accept": "application/json"
+    "Accept": "application/json",
+    "Authorization": `Bearer ${token}`
   }
-};
+}
 
-const HTTP_METHODS = {
+export const HTTP_METHODS = {
   POST: 'post',
   GET: 'get',
   PUT: 'put',
@@ -19,20 +20,20 @@ export const httpRequest = async ({
   method = HTTP_METHODS.POST,
   endpoint = '/',
   body = {},
-  params = {}
+  params = {},
+  token = null
 }) => {
   try {
-    const url = 'http://localhost:3000' + endpoint
+    const url = 'http://54.89.147.60:3000' + endpoint;
     const options = {
       method,
       url,
       data: body,
       params,
-      headers: headersConfig()
-    }
+      headers: headersConfig(token)
+    };
     return await axios(options);
   } catch (error) {
     throw error;
   }
-
-};
+}

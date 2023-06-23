@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const errorHandler = require('../../utils/errorHandler');
 const dictErrors = require('./utils/dict.errors');
 const Order = require('./models/orders.model');
+const clotheService = require('../clothes/clothes.service');
 const { query } = require('express');
 
 const ORDER_STATUS = {
@@ -16,11 +17,14 @@ const PAYMENT_TYPE = {
   TRANSFER: 3
 };
 
+
 const add = async (orderData, buyerId) => {
   try {
     orderData.buyerId = buyerId;
     const order = Order(orderData);
+
     await order.save();
+
     return {
       message: 'Order created',
       order

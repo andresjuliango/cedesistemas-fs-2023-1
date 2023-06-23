@@ -4,7 +4,7 @@
   "description": "moreuse api express",
   "main": "app.js",
   "scripts": {
-    "start:pro": "set NODE_ENV=pro&&app.js",
+    "start:pro": "NODE_ENV=pro node app.js",
     "start:dev": "set NODE_ENV=dev&&nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

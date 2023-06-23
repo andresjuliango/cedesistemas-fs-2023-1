@@ -9,10 +9,36 @@ const CLOTHES_STATUS = {
 }
 
 const add = async (req, res) => {
-try {
-  const orderData = req.body;
-  const {idUser} = req.payload;
-  //TODO
+  try {
+    const orderData = req.body;
+    const {idUser} = req.payload;
+
+    console.log('orderData',orderData);
+    console.log('idUser',idUser);
+
+    //Obtiene los datos de la prenda
+    const clotheRes = await clotheService.getDetail(orderData.clotheId);
+    const clotheStatus = clotheRes.clothe.status;
+
+    if (clotheStatus === CLOTHES_STATUS.FOR_SALE){
+      orderData.sellerId = clotheRes.clothe.sellerId;
+      orderData.status = ORDER_STATUS.ACTIVE
+
+      if (buyerId === clotheRes.clothe.sellerId){
+        throw error.handled ? error : errorHandler(dictErrors.EQUAL_SELLER_BUYER)
+      } else {
+
+        orderData.price = clotheRes.clothe.price;
+
+        const response = await orderService.add(orderData, buyerId);
+
+        const clotheRes = await clotheService.changeStatus(orderData.clotheId, CLOTHES_STATUS.SOLD);
+
+        res.status(200).json(response);
+
+      }
+
+    }
   } catch (error) {
     res.status(error.status).json(error.response)
   }

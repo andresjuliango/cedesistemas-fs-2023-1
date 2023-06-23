@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react';
-import {createBrowserRouter} from 'react-router-dom';
+import React, { Suspense, useEffect } from 'react';
+import {createBrowserRouter, useLocation} from 'react-router-dom';
 import { LazyLoading } from '../Components/LazyLoading';
 
 //Carga perezosa lazy load
@@ -9,6 +9,7 @@ const Signup = React.lazy(() => import('../Pages/Signup'));
 const Profile = React.lazy(() => import('../Pages/Profile'));
 const MyClothes = React.lazy(() => import('../Pages/MyClothes'));
 const AddClothing = React.lazy(() => import('../Pages/AddClothing'));
+const Logout = React.lazy(() => import('../Pages/Logout'));
 
 // Se hizo de esta forma para poner timeout y ver la imagen de carga
 const Login = React.lazy(() => import('../Pages/Login').then((module) => {
@@ -18,7 +19,6 @@ const Login = React.lazy(() => import('../Pages/Login').then((module) => {
     }, 1000)
   })
 }));
-
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +42,14 @@ export const router = createBrowserRouter([
     element: (
       <Suspense fallback={<LazyLoading />}>
         <Login />
+      </Suspense>
+    )
+  },
+  {
+    path: "/logout",
+    element: (
+      <Suspense fallback={<LazyLoading />}>
+        <Logout />
       </Suspense>
     )
   },

@@ -4,17 +4,19 @@ import { Topbar } from "../Topbar"
 import { PageContainer, PageTitleContainer } from "./styles"
 import { useContext, useEffect } from "react"
 import { MenuContext } from "../../Contexts/MenuContext"
+import { UserContext } from "../../Contexts/UserContext"
 
 export const Page = (props) => {
 
   //const location = useLocation();
   const { onCloseMenu } = useContext(MenuContext);
+  const { validateSession } = useContext(UserContext);
 
-  // Hook useEffect permite escuchar el cambio de estado de algo, para el ciclo de vida del componente
   useEffect (() => {
-    //unica vez al inicio del componente
+    // única vez al inicio del componente
     hideMenu();
-  },[]);
+    validateSession();
+  }, []);
 
   const hideMenu = () => {
     onCloseMenu();
@@ -26,12 +28,12 @@ export const Page = (props) => {
       {
         props.title && (
           <PageTitleContainer>
-            <h1>{ props.title }</h1>
+            <h1>{props.title}</h1>
           </PageTitleContainer>
         )
       }
       <div>
-        { props.children }
+        {props.children}
       </div>
       <Menu />
     </PageContainer>
