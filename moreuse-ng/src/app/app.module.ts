@@ -3,21 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContactusComponent } from './UI/components/contactus/contactus.component';
 import { DefaultModule } from './UI/layouts/default/default.module';
 import { SharedModule } from './UI/shared/shared.module';
+import { FullscreenModule } from './UI/layouts/fullscreen/fullscreen.module';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ContactusComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DefaultModule,
-    SharedModule
+    SharedModule,
+    FullscreenModule
   ],
   providers: [],
   bootstrap: [AppComponent]
