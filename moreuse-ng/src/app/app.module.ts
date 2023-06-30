@@ -17,8 +17,8 @@ import { FullscreenModule } from './UI/layouts/fullscreen/fullscreen.module';
     BrowserModule,
     AppRoutingModule,
     DefaultModule,
-    SharedModule,
-    FullscreenModule
+    FullscreenModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
       var correo = this.loginForm.controls['email'].value;
       var password = this.loginForm.controls['password'].value;
       localStorage.setItem('token',correo + password);
-
       this.router.navigate(['/']);
     }
     else {

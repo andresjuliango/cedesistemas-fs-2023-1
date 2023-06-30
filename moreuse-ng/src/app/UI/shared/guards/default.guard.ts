@@ -12,7 +12,7 @@ export class DefaultGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    if (localStorage.getItem('token') === 'juan2@gmail.com') {
+    if (localStorage.getItem('token') === 'juan2@gmail.comQwerty12') {
       return true;
     }
     else
