@@ -1,0 +1,103 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="jumbotron jumbotron-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <h1 class="h1">
+                    Contactenos <small>Sientase libre de contactarnos</small></h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="well well-sm">
+                <form [formGroup]="contactanosForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Nombre</label>
+                            <input type="text" class="form-control" id="name" formControlName="name" placeholder="Ingrese Nombre"/>
+                            <div *ngIf="campos['name'].touched || campos['name'].dirty">
+                              <div *ngFor="let validation of validationMessages.name">
+                                  <label class="text-danger"
+                                      *ngIf="campos['name'].hasError(validation.type)">{{validation.message}}</label>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                Email</label>
+                                <div *ngIf="campos['email'].touched || campos['email'].dirty">
+                                  <div *ngFor="let validation of validationMessages.email">
+                                      <label class="text-danger"
+                                          *ngIf="campos['email'].hasError(validation.type)">{{validation.message}}</label>
+                                  </div>
+                                </div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                </span>
+                                <input type="email" class="form-control" id="email" placeholder="Ingrese email" formControlName="email"/></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">
+                                Sujeto</label>
+                            <select id="subject" name="subject" class="form-control" (change)="changeSubject($event)" formControlName="subject">
+                              <option value="">Elija una opción</option>
+                              <option *ngFor="let subject of Subject" [ngValue]="subject">
+                                {{ subject }}
+                              </option>
+                                <!-- <option value="na" selected="">Elija una opción:</option>
+                                <option value="service">Servicio General de Atención al Cliente</option>
+                                <option value="suggestions">Sugerencias</option>
+                                <option value="product">Soporte de producto</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Mensaje</label>
+                                <div *ngIf="campos['message'].touched || campos['message'].dirty">
+                                  <div *ngFor="let validation of validationMessages.message">
+                                      <label class="text-danger"
+                                          *ngIf="campos['message'].hasError(validation.type)">{{validation.message}}</label>
+                                  </div>
+                                </div>
+                            <textarea name="message" id="message" class="form-control" rows="9" cols="25"
+                                placeholder="Mensaje" formControlName="message"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnContactUs" (click)="contactanos()">
+                            Enviar Mensaje</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <form>
+            <legend><span class="glyphicon glyphicon-globe"></span> Nuestra Oficina</legend>
+            <address>
+                <strong>MoreUse, Inc.</strong><br>
+                Ruta N, Oficina 123<br>
+                Medellín, Antioquia<br>
+                <abbr title="Phone">
+                    P:</abbr>
+                (123) 456-7890
+            </address>
+            <address>
+                <strong>Nombre Completo</strong><br>
+                <a href="mailto:#">first.last@example.com</a>
+            </address>
+            </form>
+        </div>
+    </div>
+</div>

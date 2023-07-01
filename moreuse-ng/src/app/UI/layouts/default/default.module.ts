@@ -5,6 +5,9 @@ import { DefaultComponent } from './default.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { ContactusComponent } from '../../components/contactus/contactus.component';
+import { ContactanosComponent } from '../../components/contactanos/contactanos.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -12,12 +15,15 @@ import { ContactusComponent } from '../../components/contactus/contactus.compone
   declarations: [
     DefaultComponent,
     HomeComponent,
-    ContactusComponent
+    ContactusComponent,
+    ContactanosComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    RouterModule,
+    ReactiveFormsModule
   ]
 })
 export class DefaultModule { }

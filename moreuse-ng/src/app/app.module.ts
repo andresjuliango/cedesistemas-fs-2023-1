@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DefaultModule } from './UI/layouts/default/default.module';
 import { SharedModule } from './UI/shared/shared.module';
 import { FullscreenModule } from './UI/layouts/fullscreen/fullscreen.module';
+import { FormsModule } from '@angular/forms';
 
 
 

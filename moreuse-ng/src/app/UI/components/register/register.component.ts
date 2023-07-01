@@ -58,6 +58,7 @@ export class RegisterComponent implements OnInit {
   public get campos() {
     return this.registerForm.controls
   }
+
   register(){
     if (this.registerForm.valid) {
       this.router.navigate(['/fullscreen/login']);

@@ -7,6 +7,7 @@ import { FullscreenComponent } from './UI/layouts/fullscreen/fullscreen.componen
 import { LoginComponent } from './UI/components/login/login.component';
 import { RegisterComponent } from './UI/components/register/register.component';
 import { DefaultGuard } from './UI/shared/guards/default.guard';
+import { ContactanosComponent } from './UI/components/contactanos/contactanos.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'default/home', pathMatch: 'full' },
@@ -19,6 +20,9 @@ const routes: Routes = [
       },
       {
         path: "contact", component: ContactusComponent
+      },
+      {
+        path: "contactanos", component: ContactanosComponent
       }
     ]
   },
