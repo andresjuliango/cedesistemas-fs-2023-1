@@ -66,7 +66,8 @@ const Home = () => {
       const data = response.data.clothes;
       setClothes(data);
     } catch (error) {
-      setClothes([]);
+      //setClothes([]);
+      console.log(error);
     }
   }
 

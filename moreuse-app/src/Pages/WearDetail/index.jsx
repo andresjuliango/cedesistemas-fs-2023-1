@@ -1,13 +1,71 @@
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../Components/Button';
 import {Page} from '../../Components/Page';
 import { WearDetailContainer, WearDetailContent, WearImageContainer } from './styles';
+import { HTTP_METHODS, httpRequest } from '../../Utils/HttpRequest';
+import React, {useEffect, useState} from 'react';
+
 
 const WearDetail = () => {
+
+  const [clothes, setClothes] = useState({});
+  const navigate = useNavigate();
+
 
   //Nos entrega el id para la url, usamos params
   const {id} = useParams();
 
+  useEffect( () => {
+
+    async function getClothe(){
+
+      try {
+
+        const response = await httpRequest({
+          method: HTTP_METHODS.GET,
+          endpoint: '/clothes/detail/'+id
+        });
+
+       setClothes(response.data);
+
+      } catch (error) {
+        console.log(error);
+      }
+
+    }
+
+    getClothe();
+
+  },[]);
+
+  const onBuy = () =>{
+
+  }
+
+  return (
+    <Page>
+      <section>
+        <WearDetailContainer>
+          <a class="inicio" ><Link to='/'> Inicio</Link></a>
+
+          <WearImageContainer>
+            <img width="100px" src={clothes.image} alt="" />
+          </WearImageContainer>
+          <WearDetailContent>
+            <div><strong>Identificador Prenda:</strong> {clothes._id}</div>
+            <div><strong>Nombre:</strong> {clothes.name}</div>
+            <div><strong>Público Objetivo:</strong> {clothes.target}</div>
+            <div><strong>Género:</strong> {clothes.gender}</div>
+            <div><strong>Descripción:</strong> {clothes.description}</div>
+            <div><strong>Precio:</strong> {clothes.price}</div>
+          </WearDetailContent>
+        </WearDetailContainer>
+        <Button text="Comprar" type="button" onPress={onBuy}></Button>
+      </section>
+    </Page>
+  )
+
+  /*
   return (
     <Page>
       <WearDetailContainer>
@@ -26,6 +84,7 @@ const WearDetail = () => {
       <Button text="Comprar" />
     </Page>
   )
+  */
 }
 
 export default WearDetail;

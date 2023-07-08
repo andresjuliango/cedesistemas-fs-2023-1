@@ -24,7 +24,7 @@ export const httpRequest = async ({
   token = null
 }) => {
   try {
-    const url = 'http://54.89.147.60:3000' + endpoint;
+    const url = 'http://localhost:3000' + endpoint;
     const options = {
       method,
       url,

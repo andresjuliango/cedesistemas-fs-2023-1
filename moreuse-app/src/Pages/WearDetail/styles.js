@@ -22,4 +22,24 @@ export const WearImageContainer = styled.div`
 
 export const WearDetailContent = styled.div`
   margin: 0 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  margin: auto;
 `;
+
+export const inicio = styled.a`
+  background-color: gray !important;
+  color: white  !important;
+  padding: 15px 25px  !important;
+  text-decoration: none  !important;
+
+  a:hover {
+    background-color: #223094  !important;
+  }
+
+`
+;
+
