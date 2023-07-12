@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { DefaultModule } from './UI/layouts/default/default.module';
 import { SharedModule } from './UI/shared/shared.module';
 import { FullscreenModule } from './UI/layouts/fullscreen/fullscreen.module';
-import { FormsModule } from '@angular/forms';
-
-
+import { Usergateway } from './domain/models/User/gateway/usergateway';
+import { MoreuseUserService } from './infraestructure/driven-adapter/services/moreuse-user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,9 +19,10 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     DefaultModule,
     FullscreenModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: Usergateway, useClass: MoreuseUserService }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

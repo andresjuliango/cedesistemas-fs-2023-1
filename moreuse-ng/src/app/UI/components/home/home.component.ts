@@ -1,4 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +12,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 //Se implementan con interfase
 export class HomeComponent implements OnInit, OnDestroy {
 
+  constructor(private http:HttpClient) { }
+
   ngOnDestroy(): void {
     setTimeout(function(){
       console.log('Adios')
@@ -17,13 +21,36 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.prueba('');
-    console.log(this.name);
+
+    //var message = localStorage.getItem('message') === '' ? 'Sin información' : localStorage.getItem('message')
+    //this.prueba(localStorage.getItem('message'));
+    //console.log(this.name);
+    var token = localStorage.getItem('token');
+    var headers;
   }
 
-  name: string | undefined;
+  name: string | undefined | null;
+  token: string | undefined | null;
 
-  prueba(name: string){
+  prueba(name: string | undefined | null){
+
+
+    var token = localStorage.getItem('token');
+    var headers;
+    if (token) {
+
+      headers = new HttpHeaders().set('authorization','Bearer ' + token);
+    }
+    const options = { headers: headers };
+
+    this.http.get('http://localhost:3000/auth/',options).subscribe({
+      next: (response: any) => {
+        this.name = response.name;
+      },
+      error: (e) => console.error(e),
+      complete: () => console.info('llamado moreuse')
+    })
+
     if (name == '') {
       this.name = 'Julián Gómez';
     }
