@@ -53,7 +53,7 @@ const getAll = async (filter) => {
 
 const getDetail = async (clotheId) => {
   try {
-    //console.log("getDetail",clotheId);
+    console.log("getDetail",clotheId);
     if (!mongoose.Types.ObjectId.isValid(clotheId)){
       //console.log(clotheId);
       throw errorHandler(dictErrors.CLOTHE_NOT_FOUND)
@@ -105,5 +105,6 @@ module.exports = {
   add,
   getAll,
   getDetail,
-  getMyStuff
+  getMyStuff,
+  changeStatus
 }

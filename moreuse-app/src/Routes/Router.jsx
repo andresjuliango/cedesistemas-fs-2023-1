@@ -10,6 +10,7 @@ const Profile = React.lazy(() => import('../Pages/Profile'));
 const MyClothes = React.lazy(() => import('../Pages/MyClothes'));
 const AddClothing = React.lazy(() => import('../Pages/AddClothing'));
 const Logout = React.lazy(() => import('../Pages/Logout'));
+const Payment = React.lazy(() => import('../Pages/Order'))
 
 // Se hizo de esta forma para poner timeout y ver la imagen de carga
 const Login = React.lazy(() => import('../Pages/Login').then((module) => {
@@ -84,5 +85,13 @@ export const router = createBrowserRouter([
         <AddClothing />
       </Suspense>
     )
-  }
+  },
+  {
+    path: "/payment/:id",
+    element: (
+      <Suspense fallback={<Lazyloading />}>
+        <Payment />
+      </Suspense>
+    )
+  },
 ]);

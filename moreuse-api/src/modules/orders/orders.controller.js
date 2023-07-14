@@ -13,11 +13,12 @@ const add = async (req, res) => {
     const orderData = req.body;
     const {idUser} = req.payload;
 
-    console.log('orderData',orderData);
+    console.log('orderData',orderData.data.clotheId);
     console.log('idUser',idUser);
 
+
     //Obtiene los datos de la prenda
-    const clotheRes = await clotheService.getDetail(orderData.clotheId);
+    const clotheRes = await clotheService.getDetail(orderData.data.clotheId);
     const clotheStatus = clotheRes.clothe.status;
 
     if (clotheStatus === CLOTHES_STATUS.FOR_SALE){
