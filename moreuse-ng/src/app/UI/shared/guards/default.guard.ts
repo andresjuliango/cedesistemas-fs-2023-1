@@ -12,7 +12,8 @@ export class DefaultGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    if (localStorage.getItem('token') === 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOiI2NGFlMDQzMTMzYTU1OTFiNTRmMDA3MjQiLCJpYXQiOjE2ODkxMjU5NjZ9.wveX0Y5PNtGSb9M3pc_FDBZHIxzjYf1xdFGsFWMjvps') {
+    if (/*localStorage.getItem('token') === 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOiI2NGFlMDQzMTMzYTU1OTFiNTRmMDA3MjQiLCJpYXQiOjE2ODk0Mjk1MjF9.69dT7WQ2lD9dWnRW37Ce1Vjdxospxs0kOZQjtwoXwTc'*/
+    localStorage.getItem('token') != '')  {
       return true;
     }
     else
