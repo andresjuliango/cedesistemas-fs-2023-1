@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { Clothes } from 'src/app/domain/models/Clothes/clothes';
+import { Clothesusecase } from 'src/app/domain/models/Clothes/usecase/clothesusecase';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,8 @@ import { HttpClient } from '@angular/common/http';
 //Se implementan con interfase
 export class HomeComponent implements OnInit, OnDestroy {
 
-  constructor(private http:HttpClient) { }
+
+  constructor(private http:HttpClient, private clothesUseCase: Clothesusecase) { }
 
   ngOnDestroy(): void {
     setTimeout(function(){
@@ -21,6 +24,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+
+    this.getClothes();
 
     //var message = localStorage.getItem('message') === '' ? 'Sin información' : localStorage.getItem('message')
     //this.prueba(localStorage.getItem('message'));
@@ -31,6 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   name: string | undefined | null;
   token: string | undefined | null;
+  clothes! : Clothes;
 
   prueba(name: string | undefined | null){
 
@@ -59,5 +65,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.name = name;
     }
   }
+
+  getClothes() {
+    this.clothesUseCase.getClothes().subscribe((data: Clothes) => {
+      this.clothes = data;
+      console.log(this.clothes);
+    })
+  }
+
 
 }

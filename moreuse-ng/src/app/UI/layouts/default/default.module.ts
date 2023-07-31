@@ -8,6 +8,7 @@ import { ContactusComponent } from '../../components/contactus/contactus.compone
 import { ContactanosComponent } from '../../components/contactanos/contactanos.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ProductdetailComponent } from '../../components/productdetail/productdetail.component';
 
 
 
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
     DefaultComponent,
     HomeComponent,
     ContactusComponent,
-    ContactanosComponent
+    ContactanosComponent,
+    ProductdetailComponent
   ],
   imports: [
     CommonModule,
